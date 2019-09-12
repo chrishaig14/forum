@@ -21,7 +21,7 @@ class NewQuestion extends React.Component {
                     <input type={"text"} required={true} placeholder={"body"} value={this.state.body} onChange={e => {
                         this.setState({body: e.target.value});
                     }}/>
-                    <button type={"submit"}>Submit</button>
+                    <button type={"submit"}>Submit question</button>
                 </form>
             </div>
         );

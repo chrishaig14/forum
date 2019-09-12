@@ -1,6 +1,6 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import "./styles/NewQuestion.css";
+import "./styles/NewAnswer.css";
 
 class NewAnswer extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class NewAnswer extends React.Component {
                     <input type={"text"} required={true} placeholder={"body"} value={this.state.body} onChange={e => {
                         this.setState({body: e.target.value});
                     }}/>
-                    <button type={"submit"}>Submit</button>
+                    <button type={"submit"}>Submit answer</button>
                 </form>
             </div>
         );

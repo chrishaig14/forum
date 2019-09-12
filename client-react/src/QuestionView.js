@@ -1,6 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import NewAnswer from "./NewAnswer";
+import "./styles/QuestionView.css";
 
 function Question(props) {
     return (
