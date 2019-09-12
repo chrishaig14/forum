@@ -13,7 +13,7 @@ import reducer from "./reducers";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const initialState = {value: 0, questionList: []};
+const initialState = {value: 0, questionList: [], questionView: null};
 
 const store = createStore(
     reducer, initialState,
@@ -21,9 +21,6 @@ const store = createStore(
 );
 
 sagaMiddleware.run(rootSaga);
-
-const action = type => store.dispatch({type});
-
 
 ReactDOM.render(
     <Provider store={store}>

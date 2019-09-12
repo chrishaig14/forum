@@ -1,20 +1,27 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import LoginBox from "./LoginBox";
 import SignupBox from "./SignupBox";
 import NewQuestion from "./NewQuestion";
 import QuestionList from "./QuestionList";
+import QuestionView from "./QuestionView";
+import {connect} from "react-redux";
 
-function App() {
+function App(props) {
     return (
         <div className="App">
             <SignupBox/>
             <LoginBox/>
             <NewQuestion/>
             <QuestionList/>
+            {props.questionView ? <QuestionView/> : null}
         </div>
     );
 }
 
-export default App;
+const mapStateToProps = state => ({
+    questionView: state.questionView
+});
+const mapDispatchToProps = null;
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

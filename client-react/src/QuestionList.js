@@ -1,33 +1,30 @@
 import * as React from "react";
 import {connect} from "react-redux";
+import "./styles/QuestionList.css";
 
-class QuestionList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {username: "", password: ""};
-    }
+function QuestionList(props) {
+    return (
 
-    render() {
-        console.log("questions: ", this.props.questions);
-        return (
-
-            <div className={"QuestionList"}>
-                {this.props.questions.map(q =>
-                    <div className={"QuestionListItem"}>
-                        Title: {q.title}
-                        Body: {q.body}
-                        Username: {q.username}
-                    </div>
-                )}
-            </div>
-        );
-    }
+        <div className={"QuestionList"}>
+            {props.questions.map(q =>
+                <div className={"QuestionListItem"} key={q.id}>
+                    <div onClick={() => props.selectQuestion(q.id)}>Title: {q.title}</div>
+                    <div>Body: {q.body}</div>
+                    <div>Username: {q.username}</div>
+                </div>
+            )}
+        </div>
+    );
 }
 
 const mapStateToProps = state => ({
     questions: state.questionList
 });
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = dispatch => ({
+    selectQuestion: questionId => {
+        dispatch({type: "SELECT_QUESTION", data: {questionId}});
+    }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionList);

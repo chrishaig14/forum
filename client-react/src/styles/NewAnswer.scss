@@ -1,0 +1,13 @@
+.NewAnswer {
+  padding: 1em;
+  border: solid 1px gray;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      align-self: center;
+    }
+  }
+}

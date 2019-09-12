@@ -2,22 +2,19 @@ import * as React from "react";
 import {connect} from "react-redux";
 import "./styles/NewQuestion.css";
 
-class NewQuestion extends React.Component {
+class NewAnswer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {title: "", body: ""};
+        this.state = {body: ""};
     }
 
     render() {
         return (
-            <div className={"NewQuestion"}>
+            <div className={"NewAnswer"}>
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     this.props.onSubmit(this.state);
                 }}>
-                    <input type={"text"} required={true} placeholder={"title"} value={this.state.title} onChange={e => {
-                        this.setState({title: e.target.value});
-                    }}/>
                     <input type={"text"} required={true} placeholder={"body"} value={this.state.body} onChange={e => {
                         this.setState({body: e.target.value});
                     }}/>
@@ -31,8 +28,8 @@ class NewQuestion extends React.Component {
 const mapStateToProps = null;
 const mapDispatchToProps = dispatch => ({
     onSubmit: data => {
-        dispatch({type: "NEW_QUESTION", data});
+        dispatch({type: "NEW_ANSWER", data});
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewQuestion);
+export default connect(mapStateToProps, mapDispatchToProps)(NewAnswer);
