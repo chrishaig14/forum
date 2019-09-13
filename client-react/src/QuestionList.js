@@ -9,6 +9,7 @@ function QuestionList(props) {
             {props.questions.map(q =>
                 <div className={"QuestionListItem"} key={q.id}>
                     <div onClick={() => props.selectQuestion(q.id)}>Title: {q.title}</div>
+                    <div>Title: <a href={"#"}>{q.title}</a></div>
                     <div>Body: {q.body}</div>
                     <div>Username: {q.username}</div>
                 </div>

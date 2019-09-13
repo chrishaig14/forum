@@ -1,0 +1,19 @@
+@mixin darkenBackgroundOnHover($background) {
+  background-color: $background;
+  &:hover {
+    background-color: darken($background, 20%);
+  }
+}
+
+.default-button {
+  padding: 0.5em;
+  border: solid 1px gray;
+  border-radius: 0.5em;
+  @include darkenBackgroundOnHover(lightgray);
+}
+
+input {
+  padding: 0.5em;
+  border: solid 1px gray;
+  border-radius: 0.5em;
+}

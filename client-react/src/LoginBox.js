@@ -1,5 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
+import "./styles/LoginBox.css";
+
 
 class LoginBox extends React.Component {
     constructor(props) {
@@ -13,13 +15,13 @@ class LoginBox extends React.Component {
                 this.props.onSubmit(this.state);
                 e.preventDefault();
             }}>
-                <input type={"text"} value={this.state.username} onChange={(e) => {
+                <input placeholder="username" type={"text"} value={this.state.username} onChange={(e) => {
                     this.setState({username: e.target.value});
                 }}/>
-                <input type={"text"} value={this.state.password} onChange={(e) => {
+                <input placeholder="password" type={"text"} value={this.state.password} onChange={(e) => {
                     this.setState({password: e.target.value});
                 }}/>
-                <button type={"submit"}>Login</button>
+                <button className={"submit-login"} type={"submit"}>Login</button>
             </form>
         );
     }

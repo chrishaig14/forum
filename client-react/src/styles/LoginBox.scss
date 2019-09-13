@@ -1,0 +1,11 @@
+@import "general";
+
+.LoginBox {
+  display: flex;
+  flex-direction: column;
+
+  .submit-login {
+    @extend .default-button;
+    align-self: center;
+  }
+}

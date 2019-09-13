@@ -6,22 +6,18 @@ import NewQuestion from "./NewQuestion";
 import QuestionList from "./QuestionList";
 import QuestionView from "./QuestionView";
 import {connect} from "react-redux";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
-function App(props) {
+function App() {
     return (
-        <div className="App">
-            <SignupBox/>
-            <LoginBox/>
-            <NewQuestion/>
-            <QuestionList/>
-            {props.questionView ? <QuestionView/> : null}
-        </div>
+        <Router>
+            <Route path={"/signup"} component={SignupBox}/>
+            <Route path={"/login"} component={LoginBox}/>
+            <Route path={"/newQuestion"} component={NewQuestion}/>
+            <Route path={"/allQuestions"} component={QuestionList}/>
+            <Route path={"/question"} component={QuestionView}/>
+        </Router>
     );
 }
 
-const mapStateToProps = state => ({
-    questionView: state.questionView
-});
-const mapDispatchToProps = null;
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

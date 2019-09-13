@@ -1,0 +1,11 @@
+@import "general";
+
+.SignupBox {
+  display: flex;
+  flex-direction: column;
+
+  .submit-signup {
+    @extend .default-button;
+    align-self: center;
+  }
+}
