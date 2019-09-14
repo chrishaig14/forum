@@ -65,7 +65,7 @@ export function* selectQuestionAsync(action) {
 
 export function* newAnswerAsync(action) {
     yield put({type: "NEW_ANSWER_REQUESTED"});
-    let token = yield select(state => state.token);
+    let token = yield select(state => state.main.token);
     let request = {
         method: "POST",
         headers: {"Content-Type": "application/json", "Authorization": token},
@@ -77,8 +77,57 @@ export function* newAnswerAsync(action) {
     yield put({type: "NEW_ANSWER_SUCCESSFUL", data: {answerId}});
 }
 
+export function* likeAnswerAsync(action) {
+    let token = yield select(state => state.main.token);
+    let request = {
+        method: "PUT",
+        headers: {"Content-Type": "application/json", "Authorization": token}
+    };
+    let answerId = action.data.answerId;
+    let result = yield fetch(serverUrl + "/answers/" + answerId + "/likes", request);
+    yield put({type: "LIKE_ANSWER_SUCCESSFUL", data: {answerId}});
+}
+
+export function* likeQuestionAsync(action) {
+    let token = yield select(state => state.main.token);
+    let request = {
+        method: "PUT",
+        headers: {"Content-Type": "application/json", "Authorization": token}
+    };
+    let questionId = action.data.questionId;
+    let result = yield fetch(serverUrl + "/questions/" + questionId + "/likes", request);
+    yield put({type: "LIKE_QUESTION_SUCCESSFUL", data: {questionId}});
+}
+
+export function* unlikeAnswerAsync(action) {
+    let token = yield select(state => state.main.token);
+    let request = {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json", "Authorization": token}
+    };
+    let answerId = action.data.answerId;
+    let result = yield fetch(serverUrl + "/answers/" + answerId + "/likes", request);
+    yield put({type: "UNLIKE_ANSWER_SUCCESSFUL", data: {answerId}});
+}
+
+export function* unlikeQuestionAsync(action) {
+    let token = yield select(state => state.main.token);
+    let request = {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json", "Authorization": token}
+    };
+    let questionId = action.data.questionId;
+    let result = yield fetch(serverUrl + "/questions/" + questionId + "/likes", request);
+    yield put({type: "UNLIKE_QUESTION_SUCCESSFUL", data: {questionId}});
+}
+
+
 export function* watcher() {
     yield all([
+        takeEvery("LIKE_ANSWER", likeAnswerAsync),
+        takeEvery("LIKE_QUESTION", likeQuestionAsync),
+        takeEvery("UNLIKE_ANSWER", unlikeAnswerAsync),
+        takeEvery("UNLIKE_QUESTION", unlikeQuestionAsync),
         takeEvery("FETCH_QUESTION", selectQuestionAsync),
         takeLatest("LOGIN", loginAsync),
         takeEvery("SIGNUP", signupAsync),

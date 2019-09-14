@@ -2,53 +2,8 @@ import * as React from "react";
 import {connect} from "react-redux";
 import NewAnswer from "./NewAnswer";
 import "./styles/QuestionView.css";
-import {NavLink} from "react-router-dom";
-
-function Question(props) {
-    console.log("tags: ", props.question.tags);
-    return (
-        <div className={"Question"}>
-            <div className={"question-container"}>
-                <div className={"likes"}>
-                    <button className={"like-button"}/>
-                    <div className={"likes-number"}>{props.question.likes.length}</div>
-                </div>
-                <div className={"question-main"}>
-                    <h1>{props.question.title}</h1>
-                    <p>{props.question.body}</p>
-                    <div className={"question-footer"}>
-                        <div className={"tags-container"}>Tags: {props.question.tags.map(t => <div
-                            className={"tag"}>{t}</div>)}</div>
-                        <div className={"asked-by"}>Asked by <NavLink
-                            to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    );
-}
-
-function Answer(props) {
-    return (
-        <div className={"Answer"}>
-            <div className={"answer-container"}>
-                <div className={"likes"}>
-                    <button className={"like-button"}/>
-                    <div className={"likes-number"}>{props.answer.likes.length}</div>
-                </div>
-                <div className={"answer-main"}>
-                    <p>{props.answer.body}</p>
-                    <div className={"answer-footer"}>
-                        <div className={"answered-by"}>Answered by <NavLink
-                            to={"/users/" + props.answer.username}>{props.answer.username}</NavLink></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
+import Question from "./Question";
+import Answer from "./Answer";
 
 class QuestionView extends React.Component {
     componentDidMount() {

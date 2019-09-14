@@ -92,7 +92,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  .like-button {
+
+  .like-button, .unlike-button {
     padding: 0;
     margin: 0;
     border: none;
@@ -106,6 +107,12 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 20px solid green;
+  }
+
+  .unlike-button {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid red;
   }
 
   .likes-number {
