@@ -17,6 +17,7 @@
     align-items: center;
     border-top: solid 1px lightgray;
     padding-top: 1em;
+
     .answered-by {
       color: gray;
       font-size: small;
@@ -86,52 +87,28 @@
   }
 }
 
-.votes {
+.likes {
   margin-top: 0.5em;
-
-  .upvote-button, .downvote-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .like-button {
     padding: 0;
     margin: 0;
     border: none;
-
     width: 0;
     height: 0;
     background-color: transparent;
     border-radius: 0;
-    margin-right: 1em;
-
-    //border-width: 0 5px 5px 0;
   }
 
-  .upvote-button {
-    //transform: rotate(270deg);
+  .like-button {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 20px solid green;
   }
 
-  .downvote-button {
-    //transform: rotate(45deg);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 20px solid red;
-  }
-
-  .upvotes, .downvotes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .upvotes {
-    margin-bottom: 1em;
-  }
-
-  .downvotes {
-    margin-top: 1em;
-  }
-
-  .upvote-number, .downvote-number {
+  .likes-number {
     color: grey;
   }
 

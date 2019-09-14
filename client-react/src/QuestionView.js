@@ -9,15 +9,9 @@ function Question(props) {
     return (
         <div className={"Question"}>
             <div className={"question-container"}>
-                <div className={"votes"}>
-                    <div className={"upvotes"}>
-                        <button className={"upvote-button"}/>
-                        <div className={"upvote-number"}>{props.question.upvotes}</div>
-                    </div>
-                    <div className={"downvotes"}>
-                        <button className={"downvote-button"}/>
-                        <div className={"downvote-number"}>{props.question.downvotes}</div>
-                    </div>
+                <div className={"likes"}>
+                    <button className={"like-button"}/>
+                    <div className={"likes-number"}>{props.question.likes.length}</div>
                 </div>
                 <div className={"question-main"}>
                     <h1>{props.question.title}</h1>
@@ -40,15 +34,9 @@ function Answer(props) {
     return (
         <div className={"Answer"}>
             <div className={"answer-container"}>
-                <div className={"votes"}>
-                    <div className={"upvotes"}>
-                        <button className={"upvote-button"}/>
-                        <div className={"upvote-number"}>{props.answer.upvotes}</div>
-                    </div>
-                    <div className={"downvotes"}>
-                        <button className={"downvote-button"}/>
-                        <div className={"downvote-number"}>{props.answer.downvotes}</div>
-                    </div>
+                <div className={"likes"}>
+                    <button className={"like-button"}/>
+                    <div className={"likes-number"}>{props.answer.likes.length}</div>
                 </div>
                 <div className={"answer-main"}>
                     <p>{props.answer.body}</p>
