@@ -38,7 +38,7 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <Header/>
-            <div style={{"margin-top": "50px"}}>
+            <div style={{"margin-top": "70px"}}>
                 <Route path={"/signup"} component={SignupBox}/>
                 <Route path={"/login"} component={LoginBox}/>
                 <Route path={"/newQuestion"} component={NewQuestion}/>

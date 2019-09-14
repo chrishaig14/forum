@@ -8,6 +8,9 @@ class Header extends React.Component {
         return (
             <div className={"Header"}>
                 <NavLink className={"home-link"} to={"/"}>Home</NavLink>
+                <div className={"search-form"}>
+                    <input type={"text"} placeholder={"Search"}/>
+                </div>
                 <div className={"user"}>{this.props.username}</div>
             </div>
         );
