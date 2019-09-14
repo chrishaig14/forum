@@ -7,8 +7,11 @@ function Answer(props) {
         <div className={"Answer"}>
             <div className={"answer-container"}>
                 <div className={"likes"}>
-                    <button onClick={() => props.likeAnswer(props.answer.id)} className={"like-button"}/>
+                    {props.answer.liked ?
+                        <button onClick={() => props.unlikeAnswer(props.answer.id)} className={"unlike-button"}/> :
+                        <button onClick={() => props.likeAnswer(props.answer.id)} className={"like-button"}/>}
                     <div className={"likes-number"}>{props.answer.likes.length}</div>
+
                 </div>
                 <div className={"answer-main"}>
                     <p>{props.answer.body}</p>
@@ -24,6 +27,8 @@ function Answer(props) {
 
 const mapStateToProps = null;
 const mapDispatchToProps = dispatch => ({
-    likeAnswer: (id) => dispatch({type: "LIKE_ANSWER", data: {answerId: id}})
+    likeAnswer: (id) => dispatch({type: "LIKE_ANSWER", data: {answerId: id}}),
+    unlikeAnswer: (id) => dispatch({type: "UNLIKE_ANSWER", data: {answerId: id}})
+
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Answer);
