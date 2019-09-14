@@ -101,19 +101,29 @@
     height: 0;
     background-color: transparent;
     border-radius: 0;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .like-button {
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid green;
+    background-image: url("https://vectr.com/tmp/cjCERuVDq/a2gJejc3t1.svg?width=46.80851063829786&height=46.80851063829789&select=d4OxZJMJYX&source=selection");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
   }
 
   .unlike-button {
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid red;
+    background-image: url("https://vectr.com/tmp/cjCERuVDq/c6z8UwwmE.svg?width=46.80851063829789&height=46.80851063829789&select=excGW7pS2&source=selection");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 30px;
+    height: 30px;
   }
+
 
   .likes-number {
     color: grey;
