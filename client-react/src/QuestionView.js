@@ -5,11 +5,14 @@ import "./styles/QuestionView.css";
 import {NavLink} from "react-router-dom";
 
 function Question(props) {
+    console.log("tags: ", props.question.tags);
     return (
         <div className={"Question"}>
             <h1>{props.question.title}</h1>
             <p>{props.question.body}</p>
             <div className={"question-footer"}>
+                <div className={"tags-container"}>Tags: {props.question.tags.map(t => <div
+                    className={"tag"}>{t}</div>)}</div>
                 <div className={"asked-by"}>Asked by <NavLink
                     to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
             </div>
