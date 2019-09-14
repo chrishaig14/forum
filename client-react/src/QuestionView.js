@@ -39,10 +39,24 @@ function Question(props) {
 function Answer(props) {
     return (
         <div className={"Answer"}>
-            <p>{props.answer.body}</p>
-            <div className={"answer-footer"}>
-                <div className={"answered-by"}>Answered by <NavLink
-                    to={"/users/" + props.answer.username}>{props.answer.username}</NavLink></div>
+            <div className={"answer-container"}>
+                <div className={"votes"}>
+                    <div className={"upvotes"}>
+                        <button className={"upvote-button"}/>
+                        <div className={"upvote-number"}>{props.answer.upvotes}</div>
+                    </div>
+                    <div className={"downvotes"}>
+                        <button className={"downvote-button"}/>
+                        <div className={"downvote-number"}>{props.answer.downvotes}</div>
+                    </div>
+                </div>
+                <div className={"answer-main"}>
+                    <p>{props.answer.body}</p>
+                    <div className={"answer-footer"}>
+                        <div className={"answered-by"}>Answered by <NavLink
+                            to={"/users/" + props.answer.username}>{props.answer.username}</NavLink></div>
+                    </div>
+                </div>
             </div>
         </div>
     );
