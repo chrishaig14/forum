@@ -8,14 +8,30 @@ function Question(props) {
     console.log("tags: ", props.question.tags);
     return (
         <div className={"Question"}>
-            <h1>{props.question.title}</h1>
-            <p>{props.question.body}</p>
-            <div className={"question-footer"}>
-                <div className={"tags-container"}>Tags: {props.question.tags.map(t => <div
-                    className={"tag"}>{t}</div>)}</div>
-                <div className={"asked-by"}>Asked by <NavLink
-                    to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
+            <div className={"question-container"}>
+                <div className={"votes"}>
+                    <div className={"upvotes"}>
+                        <button className={"upvote-button"}/>
+                        <div className={"upvote-number"}>{props.question.upvotes}</div>
+                    </div>
+                    <div className={"downvotes"}>
+                        <button className={"downvote-button"}/>
+                        <div className={"downvote-number"}>{props.question.downvotes}</div>
+                    </div>
+                </div>
+                <div className={"question-main"}>
+                    <h1>{props.question.title}</h1>
+                    <p>{props.question.body}</p>
+                    <div className={"question-footer"}>
+                        <div className={"tags-container"}>Tags: {props.question.tags.map(t => <div
+                            className={"tag"}>{t}</div>)}</div>
+                        <div className={"asked-by"}>Asked by <NavLink
+                            to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
+                    </div>
+                </div>
             </div>
+
+
         </div>
     );
 }
