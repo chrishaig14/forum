@@ -10,7 +10,7 @@ function Question(props) {
             <h1>{props.question.title}</h1>
             <p>{props.question.body}</p>
             <div className={"question-footer"}>
-                <div className={"asked-by"}>Asked by: <NavLink
+                <div className={"asked-by"}>Asked by <NavLink
                     to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
             </div>
         </div>
@@ -22,7 +22,7 @@ function Answer(props) {
         <div className={"Answer"}>
             <p>{props.answer.body}</p>
             <div className={"answer-footer"}>
-                <div className={"answered-by"}>Answered by: <NavLink
+                <div className={"answered-by"}>Answered by <NavLink
                     to={"/users/" + props.answer.username}>{props.answer.username}</NavLink></div>
             </div>
         </div>
@@ -40,8 +40,13 @@ class QuestionView extends React.Component {
             this.props.question ?
                 (<div className={"QuestionView"}>
                     <Question question={this.props.question}/>
+                    <div className={"answer-container"}>
+
+                        <h2>{this.props.answers.length} answers</h2>
+                        {this.props.answers.map(a => <Answer answer={a} key={a.id}/>)}
+                    </div>
+
                     <NewAnswer/>
-                    {this.props.answers.map(a => <Answer answer={a} key={a.id}/>)}
                 </div>) : (<div>{"loading"}</div>)
 
         );

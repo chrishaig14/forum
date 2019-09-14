@@ -15,10 +15,12 @@ class NewQuestion extends React.Component {
                     e.preventDefault();
                     this.props.onSubmit(this.state);
                 }}>
-                    <input type={"text"} required={true} placeholder={"title"} value={this.state.title} onChange={e => {
+                    <input type={"text"} className={"new-question-title"} required={true} placeholder={"title"}
+                           value={this.state.title} onChange={e => {
                         this.setState({title: e.target.value});
                     }}/>
-                    <input type={"text"} required={true} placeholder={"body"} value={this.state.body} onChange={e => {
+                    <textarea className={"new-question-body"} required={true} placeholder={"body"}
+                           value={this.state.body} onChange={e => {
                         this.setState({body: e.target.value});
                     }}/>
                     <button className={"submit-question"} type={"submit"}>Submit question</button>

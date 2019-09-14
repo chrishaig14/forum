@@ -4,13 +4,18 @@
 .Answer {
   border: solid 1px gray;
   padding: 1em;
-  margin: 1em;
+  margin-bottom: 1em;
   border-radius: 0.5em;
 
   .answer-footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+
+    .answered-by {
+      color: gray;
+      font-size: small;
+    }
   }
 }
 
@@ -25,5 +30,11 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+
+    .asked-by {
+      color: gray;
+      font-size: small;
+    }
   }
 }
+

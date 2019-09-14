@@ -8,9 +8,14 @@
   form {
     display: flex;
     flex-direction: column;
-
+    .new-question-title {
+      margin-bottom: 1em;
+    }
+    .new-question-body {
+      margin-bottom: 1em;
+    }
     .submit-question {
-      align-self: center;
+      align-self: flex-end;
     }
   }
 }

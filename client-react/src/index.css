@@ -1,7 +1,10 @@
-input {
+input, textarea {
   border: solid 1px #4285F4;
   border-radius: 0.5em;
   padding: 0.5em; }
+
+input:active, button:active, textarea:active {
+  outline: none; }
 
 button {
   padding: 0.5em;

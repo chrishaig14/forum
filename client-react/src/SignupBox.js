@@ -14,12 +14,14 @@ class SignupBox extends React.Component {
                 this.props.onSubmit(this.state);
                 e.preventDefault();
             }}>
-                <input placeholder="username" type={"text"} value={this.state.username} onChange={(e) => {
-                    this.setState({username: e.target.value});
-                }}/>
-                <input placeholder="password" type={"text"} value={this.state.password} onChange={(e) => {
-                    this.setState({password: e.target.value});
-                }}/>
+                <input className={"signup-username"} placeholder="username" type={"text"} value={this.state.username}
+                       onChange={(e) => {
+                           this.setState({username: e.target.value});
+                       }}/>
+                <input className={"signup-password"} placeholder="password" type={"text"} value={this.state.password}
+                       onChange={(e) => {
+                           this.setState({password: e.target.value});
+                       }}/>
                 <button className={"submit-signup"} type={"submit"}>Sign up</button>
             </form>
         );

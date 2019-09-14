@@ -15,10 +15,10 @@ class LoginBox extends React.Component {
                 this.props.onSubmit(this.state);
                 e.preventDefault();
             }}>
-                <input placeholder="username" type={"text"} value={this.state.username} onChange={(e) => {
+                <input className={"login-username"} placeholder="username" type={"text"} value={this.state.username} onChange={(e) => {
                     this.setState({username: e.target.value});
                 }}/>
-                <input placeholder="password" type={"text"} value={this.state.password} onChange={(e) => {
+                <input className={"login-password"} placeholder="password" type={"text"} value={this.state.password} onChange={(e) => {
                     this.setState({password: e.target.value});
                 }}/>
                 <button className={"submit-login"} type={"submit"}>Login</button>

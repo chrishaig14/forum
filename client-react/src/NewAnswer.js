@@ -11,13 +11,15 @@ class NewAnswer extends React.Component {
     render() {
         return (
             <div className={"NewAnswer"}>
+                <h2>New answer</h2>
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     this.props.onSubmit(this.state);
                 }}>
-                    <textarea required={true} placeholder={"body"} value={this.state.body} onChange={e => {
-                        this.setState({body: e.target.value});
-                    }}/>
+                    <textarea className={"new-answer-body"} required={true} placeholder={"body"} value={this.state.body}
+                              onChange={e => {
+                                  this.setState({body: e.target.value});
+                              }}/>
                     <button className={"submit-answer"} type={"submit"}>Submit answer</button>
                 </form>
             </div>

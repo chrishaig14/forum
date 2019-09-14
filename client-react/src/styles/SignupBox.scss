@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
 
+  .signup-username {
+    margin-bottom: 1em;
+  }
+
+  .signup-password {
+    margin-bottom: 1em;
+  }
+
+
   .submit-signup {
     align-self: center;
   }
