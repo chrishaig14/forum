@@ -18,6 +18,7 @@ import NewQuestion from "./NewQuestion";
 import QuestionList from "./QuestionList";
 import QuestionView from "./QuestionView";
 import {Route} from "react-router-dom";
+import Header from "./Header";
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -36,11 +37,14 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <Route path={"/signup"} component={SignupBox}/>
-            <Route path={"/login"} component={LoginBox}/>
-            <Route path={"/newQuestion"} component={NewQuestion}/>
-            <Route path={"/allQuestions"} component={QuestionList}/>
-            <Route path={"/questions/:id"} component={QuestionView}/>
+            <Header/>
+            <div style={{"margin-top": "50px"}}>
+                <Route path={"/signup"} component={SignupBox}/>
+                <Route path={"/login"} component={LoginBox}/>
+                <Route path={"/newQuestion"} component={NewQuestion}/>
+                <Route path={"/allQuestions"} component={QuestionList}/>
+                <Route path={"/questions/:id"} component={QuestionView}/>
+            </div>
         </ConnectedRouter>
     </Provider>, document.getElementById("root"));
 
