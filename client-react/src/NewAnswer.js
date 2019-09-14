@@ -15,7 +15,7 @@ class NewAnswer extends React.Component {
                     e.preventDefault();
                     this.props.onSubmit(this.state);
                 }}>
-                    <input type={"text"} required={true} placeholder={"body"} value={this.state.body} onChange={e => {
+                    <textarea required={true} placeholder={"body"} value={this.state.body} onChange={e => {
                         this.setState({body: e.target.value});
                     }}/>
                     <button className={"submit-answer"} type={"submit"}>Submit answer</button>

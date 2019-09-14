@@ -3,13 +3,13 @@
 .NewAnswer {
   padding: 1em;
   border: solid 1px gray;
-
+  border-radius: 0.5em;
+  margin :1em;
   form {
     display: flex;
     flex-direction: column;
 
     .submit-answer {
-      @extend .default-button;
       align-self: center;
     }
   }

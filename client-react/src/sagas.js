@@ -1,5 +1,7 @@
 import {all, put, takeEvery, select, takeLatest} from "redux-saga/effects";
 
+import {push, replace} from "connected-react-router";
+
 const serverUrl = "http://localhost:8000";
 
 export function* loginAsync(action) {
@@ -10,7 +12,10 @@ export function* loginAsync(action) {
         body: JSON.stringify({user: action.data})
     };
     let result = yield fetch(serverUrl + "/login", request);
-    yield put({type: "LOGIN_SUCCESSFUL", data: {token: result.headers.get("authorization")}});
+    if (result.ok) {
+        yield put({type: "LOGIN_SUCCESSFUL", data: {token: result.headers.get("authorization")}});
+        yield put(push("/allQuestions"));
+    }
 }
 
 export function* signupAsync(action) {
@@ -26,7 +31,7 @@ export function* signupAsync(action) {
 
 export function* newQuestionAsync(action) {
     yield put({type: "NEW_QUESTION_REQUESTED"});
-    let token = yield select((state) => state.token);
+    let token = yield select((state) => state.main.token);
     let request = {
         method: "POST",
         headers: {"Content-Type": "application/json", "Authorization": token},
@@ -47,10 +52,10 @@ export function* getAllQuestions() {
 export function* selectQuestionAsync(action) {
     let questionId = action.data.questionId;
     yield put({type: "QUESTION_SELECTED", data: {questionId}});
-    let answers = yield select(state => {
-        let question = state.questionList.filter(q => q.id === questionId)[0];
-        return question.answers;
-    });
+    let result = yield fetch(serverUrl + "/questions/" + questionId);
+    result = yield result.json();
+    yield put({type: "GET_QUESTION_SUCCESSFUL", data: {...result}});
+    let answers = result.question.answers;
     for (let answerId of answers) {
         let result = yield fetch(serverUrl + "/answers/" + answerId);
         result = yield result.json();
@@ -66,7 +71,7 @@ export function* newAnswerAsync(action) {
         headers: {"Content-Type": "application/json", "Authorization": token},
         body: JSON.stringify({answer: action.data})
     };
-    let questionId = yield select(state => state.questionView.question.id);
+    let questionId = yield select(state => state.main.questionView.question.id);
     let result = yield fetch(serverUrl + "/questions/" + questionId + "/answers", request);
     let answerId = yield result.json();
     yield put({type: "NEW_ANSWER_SUCCESSFUL", data: {answerId}});
@@ -74,7 +79,7 @@ export function* newAnswerAsync(action) {
 
 export function* watcher() {
     yield all([
-        takeEvery("SELECT_QUESTION", selectQuestionAsync),
+        takeEvery("FETCH_QUESTION", selectQuestionAsync),
         takeLatest("LOGIN", loginAsync),
         takeEvery("SIGNUP", signupAsync),
         takeEvery("NEW_QUESTION", newQuestionAsync),

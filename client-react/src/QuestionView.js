@@ -2,13 +2,17 @@ import * as React from "react";
 import {connect} from "react-redux";
 import NewAnswer from "./NewAnswer";
 import "./styles/QuestionView.css";
+import {NavLink} from "react-router-dom";
 
 function Question(props) {
     return (
         <div className={"Question"}>
-            <div>Title: {props.question.title}</div>
-            <div>Body: {props.question.body}</div>
-            <div>Username: {props.question.username}</div>
+            <h1>{props.question.title}</h1>
+            <p>{props.question.body}</p>
+            <div className={"question-footer"}>
+                <div className={"asked-by"}>Asked by: <NavLink
+                    to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
+            </div>
         </div>
     );
 }
@@ -16,22 +20,36 @@ function Question(props) {
 function Answer(props) {
     return (
         <div className={"Answer"}>
-            <div>Body: {props.answer.body}</div>
-            <div>Username: {props.answer.username}</div>
+            <p>{props.answer.body}</p>
+            <div className={"answer-footer"}>
+                <div className={"answered-by"}>Answered by: <NavLink
+                    to={"/users/" + props.answer.username}>{props.answer.username}</NavLink></div>
+            </div>
         </div>
     );
 }
 
-function QuestionView(props) {
-    return (
-        <div className={"QuestionView"}>
-            <Question question={props.question}/>
-            <NewAnswer/>
-            {props.answers.map(a => <Answer answer={a} key={a.id}/>)}
-        </div>
-    );
+class QuestionView extends React.Component {
+    componentDidMount() {
+        console.log("MOUNTED QUESTION VIEW!");
+        this.props.onMount(this.props.match.params.id);
+    }
+
+    render() {
+        return (
+            this.props.question ?
+                (<div className={"QuestionView"}>
+                    <Question question={this.props.question}/>
+                    <NewAnswer/>
+                    {this.props.answers.map(a => <Answer answer={a} key={a.id}/>)}
+                </div>) : (<div>{"loading"}</div>)
+
+        );
+    }
 }
 
-const mapStateToProps = state => ({...state.questionView});
-const mapDispatchToProps = null;
+const mapStateToProps = state => ({...state.main.questionView});
+const mapDispatchToProps = dispatch => ({
+    onMount: (id) => dispatch({type: "FETCH_QUESTION", data: {questionId: id}})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionView);

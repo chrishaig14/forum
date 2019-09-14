@@ -1,14 +1,15 @@
-.default-button {
-  padding: 0.5em;
-  border: solid 1px gray;
-  border-radius: 0.5em;
-  background-color: lightgray; }
-  .default-button:hover {
-    background-color: #a0a0a0; }
-
 input {
+  border: solid 1px #4285F4;
+  border-radius: 0.5em;
+  padding: 0.5em; }
+
+button {
   padding: 0.5em;
-  border: solid 1px gray;
-  border-radius: 0.5em; }
+  border-radius: 0.5em;
+  border: none;
+  background-color: #4285F4;
+  color: white; }
+  button:hover {
+    background-color: #0d47a1; }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,1 +1,29 @@
+@import "general";
 
+
+.Answer {
+  border: solid 1px gray;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 0.5em;
+
+  .answer-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+
+.Question {
+  border: solid 1px gray;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 0.5em;
+
+  .question-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

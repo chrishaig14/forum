@@ -5,7 +5,6 @@
   flex-direction: column;
 
   .submit-login {
-    @extend .default-button;
     align-self: center;
   }
 }
