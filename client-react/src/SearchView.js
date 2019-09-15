@@ -16,11 +16,10 @@ class SearchView extends React.Component {
     }
 
     render() {
-        console.log("SEARCH WITH: ", parse(this.props.location.search));
         return (
 
             <div className={"QuestionList"}>
-                <h1>{this.props.questions.length} results</h1>
+                <h1>{this.props.questions.length === 1 ? "1 result" : (this.props.questions.length === 0 ? "No results" : this.props.questions.length + " results")}</h1>
                 {this.props.questions.map(q =>
                     <div className={"QuestionListItem"} key={q.id}>
                         <NavLink to={"/questions/" + q.id}>{q.title}</NavLink>

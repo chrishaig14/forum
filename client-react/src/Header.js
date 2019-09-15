@@ -13,6 +13,11 @@ class Header extends React.Component {
         return (
             <div className={"Header"}>
                 <NavLink className={"home-link"} to={"/"}>Home</NavLink>
+                <NavLink className={"new-question-link"} to={"/newQuestion"}>
+                    <button>
+                        New question
+                    </button>
+                </NavLink>
                 <div className={"search-form"}>
                     <form onSubmit={(e) => {
                         e.preventDefault();
