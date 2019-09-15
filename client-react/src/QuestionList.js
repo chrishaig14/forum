@@ -10,8 +10,6 @@ function QuestionList(props) {
             {props.questions.map(q =>
                 <div className={"QuestionListItem"} key={q.id}>
                     <NavLink to={"/questions/" + q.id}>{q.title}</NavLink>
-                    {/*<div>Body: {q.body}</div>*/}
-                    {/*<div>Username: {q.username}</div>*/}
                 </div>
             )}
         </div>
