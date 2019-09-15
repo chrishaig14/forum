@@ -27,6 +27,7 @@ export function* signupAsync(action) {
     };
     let result = yield fetch(serverUrl + "/users", request);
     yield put({type: "SIGNUP_SUCCESSFUL"});
+    yield put(push("/"));
 }
 
 export function* newQuestionAsync(action) {
