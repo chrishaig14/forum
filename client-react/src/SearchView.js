@@ -2,15 +2,25 @@ import * as React from "react";
 import {connect} from "react-redux";
 import "./styles/QuestionList.css";
 import {NavLink} from "react-router-dom";
+import {parse} from "query-string";
 
-class QuestionList extends React.Component {
+class SearchView extends React.Component {
     componentDidMount() {
-        this.props.onMount();
+        this.props.search(this.props.location);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.location !== this.props.location) {
+            this.props.search(this.props.location);
+        }
     }
 
     render() {
+        console.log("SEARCH WITH: ", parse(this.props.location.search));
         return (
+
             <div className={"QuestionList"}>
+                <h1>{this.props.questions.length} results</h1>
                 {this.props.questions.map(q =>
                     <div className={"QuestionListItem"} key={q.id}>
                         <NavLink to={"/questions/" + q.id}>{q.title}</NavLink>
@@ -20,6 +30,7 @@ class QuestionList extends React.Component {
             </div>
         );
     }
+
 }
 
 const mapStateToProps = state => ({
@@ -27,7 +38,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onMount: () => dispatch({type: "GET_ALL_QUESTIONS"})
+    search: url => {
+        dispatch({type: "SEARCH", data: {url}});
+    }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionList);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchView);

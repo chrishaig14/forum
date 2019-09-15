@@ -20,6 +20,7 @@ import QuestionView from "./QuestionView";
 import {Redirect, Route, Switch} from "react-router-dom";
 import Header from "./Header";
 import Cookies from "js-cookie";
+import SearchView from "./SearchView";
 
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
@@ -51,6 +52,7 @@ ReactDOM.render(
                 <Route path={"/newQuestion"} component={NewQuestion}/>
                 <Route exact path={"/"} component={QuestionList}/>
                 <Route path={"/questions/:id"} component={QuestionView}/>
+                <Route path={"/search"} component={SearchView}/>
             </div>
         </ConnectedRouter>
     </Provider>, document.getElementById("root"));

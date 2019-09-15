@@ -16,7 +16,7 @@ class Header extends React.Component {
                 <div className={"search-form"}>
                     <form onSubmit={(e) => {
                         e.preventDefault();
-                        this.props.search(this.state.search);
+                        this.props.submitSearch(this.state.search);
                     }}>
                         <input type={"text"} placeholder={"Search"}
                                value={this.state.search}
@@ -38,6 +38,6 @@ class Header extends React.Component {
 const mapStateToProps = state => ({username: state.main.token});
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch({type: "LOGOUT"}),
-    search: (terms) => dispatch({type: "SEARCH", data: {terms}})
+    submitSearch: (terms) => dispatch({type: "SUBMIT_SEARCH", data: {terms}})
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

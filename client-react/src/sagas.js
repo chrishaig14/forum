@@ -1,6 +1,7 @@
 import {all, put, takeEvery, select, takeLatest} from "redux-saga/effects";
 
 import {push, replace} from "connected-react-router";
+import {parse} from "query-string";
 
 const serverUrl = "http://localhost:8000";
 
@@ -128,9 +129,19 @@ export function* searchAsync(action) {
         method: "GET",
         headers: {"Content-Type": "application/json"}
     };
-    let result = yield fetch(serverUrl + "/search?terms=" + action.data.terms, request);
+    console.log("URL: ", action.data.url);
+    let url = action.data.url;
+    console.log("URL:: ", url);
+    let terms = parse(url.search).terms;
+    let result = yield fetch(serverUrl + "/search?terms=" + terms, request);
     result = yield result.json();
     yield put({type: "SEARCH_RESULTS_READY", data: {searchResults: result}});
+}
+
+
+export function* submitSearchAsync(action) {
+    let url = "/search?terms=" + action.data.terms;
+    yield put(push(url));
 }
 
 
@@ -138,6 +149,7 @@ export function* watcher() {
     yield all([
         takeEvery("LIKE_ANSWER", likeAnswerAsync),
         takeEvery("SEARCH", searchAsync),
+        takeEvery("SUBMIT_SEARCH", submitSearchAsync),
         takeEvery("LIKE_QUESTION", likeQuestionAsync),
         takeEvery("UNLIKE_ANSWER", unlikeAnswerAsync),
         takeEvery("UNLIKE_QUESTION", unlikeQuestionAsync),
@@ -145,10 +157,11 @@ export function* watcher() {
         takeLatest("LOGIN", loginAsync),
         takeEvery("SIGNUP", signupAsync),
         takeEvery("NEW_QUESTION", newQuestionAsync),
-        takeEvery("NEW_ANSWER", newAnswerAsync)
+        takeEvery("NEW_ANSWER", newAnswerAsync),
+        takeEvery("GET_ALL_QUESTIONS", getAllQuestions)
     ]);
 }
 
 export default function* rootSaga() {
-    yield all([getAllQuestions(), watcher()]);
+    yield all([watcher()]);
 }
