@@ -21,8 +21,9 @@ function Question(props) {
                     <h2>{props.question.title}</h2>
                     <p>{props.question.body}</p>
                     <div className={"question-footer"}>
-                        <div className={"tags-container"}>Tags: {props.question.tags.map(t => <div
-                            className={"tag"}>{t}</div>)}</div>
+                        <div className={"tags-container"}>Tags: {props.question.tags.map(t =>
+                            <NavLink
+                                className={"tag"}>{t}</NavLink>)}</div>
                         <div className={"asked-by"}>Asked by <NavLink
                             to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
                     </div>
