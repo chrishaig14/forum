@@ -11,7 +11,7 @@ class NewAnswer extends React.Component {
     render() {
         return (
             <div className={"NewAnswer"}>
-                <h2>New answer</h2>
+                <h3>New answer</h3>
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     this.props.onSubmit(this.state);

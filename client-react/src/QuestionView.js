@@ -18,7 +18,10 @@ class QuestionView extends React.Component {
                     <Question question={this.props.question}/>
                     <div className={"answer-container"}>
 
-                        <h2>{this.props.answers.length} answers</h2>
+                        <h3 style={{
+                            "margin-top": "1em",
+                            "margin-bottom": "1em"
+                        }}>{this.props.answers.length} answers</h3>
                         {this.props.answers.map(a => <Answer answer={a} key={a.id}/>)}
                     </div>
 

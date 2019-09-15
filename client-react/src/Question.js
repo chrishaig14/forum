@@ -18,7 +18,7 @@ function Question(props) {
                     <div className={"likes-number"}>{props.question.likes.length}</div>
                 </div>
                 <div className={"question-main"}>
-                    <h1>{props.question.title}</h1>
+                    <h2>{props.question.title}</h2>
                     <p>{props.question.body}</p>
                     <div className={"question-footer"}>
                         <div className={"tags-container"}>Tags: {props.question.tags.map(t => <div
