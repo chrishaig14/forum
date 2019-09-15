@@ -122,10 +122,22 @@ export function* unlikeQuestionAsync(action) {
     yield put({type: "UNLIKE_QUESTION_SUCCESSFUL", data: {questionId}});
 }
 
+export function* searchAsync(action) {
+    console.log("ACTION: ", action);
+    let request = {
+        method: "GET",
+        headers: {"Content-Type": "application/json"}
+    };
+    let result = yield fetch(serverUrl + "/search?terms=" + action.data.terms, request);
+    result = yield result.json();
+    yield put({type: "SEARCH_RESULTS_READY", data: {searchResults: result}});
+}
+
 
 export function* watcher() {
     yield all([
         takeEvery("LIKE_ANSWER", likeAnswerAsync),
+        takeEvery("SEARCH", searchAsync),
         takeEvery("LIKE_QUESTION", likeQuestionAsync),
         takeEvery("UNLIKE_ANSWER", unlikeAnswerAsync),
         takeEvery("UNLIKE_QUESTION", unlikeQuestionAsync),

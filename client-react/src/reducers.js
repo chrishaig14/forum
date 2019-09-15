@@ -6,6 +6,8 @@ function reducer(state = {}, action) {
     let newState = JSON.parse(JSON.stringify(state));
     if (action.type === "ALL_QUESTIONS_SUCCESSFUL") {
         newState.questionList = action.data.questions;
+    } else if (action.type === "SEARCH_RESULTS_READY") {
+        newState.questionList = action.data.searchResults;
     } else if (action.type === "LOGIN_SUCCESSFUL") {
         newState.token = action.data.token;
         Cookies.set("token", newState.token);
