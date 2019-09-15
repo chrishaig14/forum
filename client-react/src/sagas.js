@@ -40,8 +40,10 @@ export function* newQuestionAsync(action) {
         body: JSON.stringify({question: action.data})
     };
     let result = yield fetch(serverUrl + "/questions", request);
-    let questionId = yield result.json();
+    let {questionId} = yield result.json();
     yield put({type: "NEW_QUESTION_SUCCESSFUL", data: {questionId}});
+    console.log("NEW QUESTION:", questionId);
+    yield put(push("/questions/" + questionId));
 }
 
 export function* getAllQuestions() {
