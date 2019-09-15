@@ -126,16 +126,12 @@ export function* unlikeQuestionAsync(action) {
 }
 
 export function* searchAsync(action) {
-    console.log("ACTION: ", action);
     let request = {
         method: "GET",
         headers: {"Content-Type": "application/json"}
     };
-    console.log("URL: ", action.data.url);
     let url = action.data.url;
-    console.log("URL:: ", url);
-    let terms = parse(url.search).terms;
-    let result = yield fetch(serverUrl + "/search?terms=" + terms, request);
+    let result = yield fetch(serverUrl + "/search" + url.search, request);
     result = yield result.json();
     yield put({type: "SEARCH_RESULTS_READY", data: {searchResults: result}});
 }
