@@ -17,14 +17,21 @@ import LoginBox from "./LoginBox";
 import NewQuestion from "./NewQuestion";
 import QuestionList from "./QuestionList";
 import QuestionView from "./QuestionView";
-import {Route} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Header from "./Header";
-
+import Cookies from "js-cookie";
 
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
 
-const initialState = {main: {value: 0, questionList: [], questionView: {question: null, answers: []}}};
+const initialState = {
+    main: {
+        value: 0,
+        questionList: [],
+        questionView: {question: null, answers: []},
+        token: Cookies.get("token")
+    }
+};
 
 const store = createStore(
     createRootReducer(history),
@@ -39,8 +46,11 @@ ReactDOM.render(
         <ConnectedRouter history={history}>
             <Header/>
             <div style={{"margin-top": "70px"}}>
-                <Route path={"/signup"} component={SignupBox}/>
-                <Route path={"/login"} component={LoginBox}/>
+                {Cookies.get("token") ? <Redirect to={"/allQuestions"}/> : null}
+                <Switch>
+                    <Route exact path={"/"} component={LoginBox}/>
+                    <Route path={"/signup"} component={SignupBox}/>
+                </Switch>
                 <Route path={"/newQuestion"} component={NewQuestion}/>
                 <Route path={"/allQuestions"} component={QuestionList}/>
                 <Route path={"/questions/:id"} component={QuestionView}/>

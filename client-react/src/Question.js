@@ -1,6 +1,7 @@
 import {NavLink} from "react-router-dom";
 import * as React from "react";
 import {connect} from "react-redux";
+import Cookies from "js-cookie";
 
 function Question(props) {
     console.log("tags: ", props.question.tags);
@@ -9,9 +10,11 @@ function Question(props) {
             <div className={"question-container"}>
                 <div className={"likes"}>
 
-                    {props.question.liked ?
-                        <button onClick={() => props.unlikeQuestion(props.question.id)} className={"unlike-button"}/> :
-                        <button onClick={() => props.likeQuestion(props.question.id)} className={"like-button"}/>}
+                    {props.question.likes.includes(Cookies.get("token")) ?
+                        <button title={props.question.likes.join(",")}
+                                onClick={() => props.unlikeQuestion(props.question.id)} className={"unlike-button"}/> :
+                        <button title={props.question.likes.join(",")}
+                                onClick={() => props.likeQuestion(props.question.id)} className={"like-button"}/>}
                     <div className={"likes-number"}>{props.question.likes.length}</div>
                 </div>
                 <div className={"question-main"}>

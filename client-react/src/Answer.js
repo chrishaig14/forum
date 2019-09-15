@@ -1,15 +1,16 @@
 import {NavLink} from "react-router-dom";
 import * as React from "react";
 import {connect} from "react-redux";
+import Cookies from "js-cookie";
 
 function Answer(props) {
     return (
         <div className={"Answer"}>
             <div className={"answer-container"}>
                 <div className={"likes"}>
-                    {props.answer.liked ?
-                        <button onClick={() => props.unlikeAnswer(props.answer.id)} className={"unlike-button"}/> :
-                        <button onClick={() => props.likeAnswer(props.answer.id)} className={"like-button"}/>}
+                    {props.answer.likes.includes(Cookies.get("token")) ?
+                        <button title={props.answer.likes.join(",")} onClick={() => props.unlikeAnswer(props.answer.id)} className={"unlike-button"}/> :
+                        <button title={props.answer.likes.join(",")} onClick={() => props.likeAnswer(props.answer.id)} className={"like-button"}/>}
                     <div className={"likes-number"}>{props.answer.likes.length}</div>
 
                 </div>
