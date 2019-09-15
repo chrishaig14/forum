@@ -13,8 +13,14 @@ class QuestionList extends React.Component {
             <div className={"QuestionList"}>
                 {this.props.questions.map(q =>
                     <div className={"QuestionListItem"} key={q.id}>
-                        <NavLink to={"/questions/" + q.id}>{q.title}</NavLink>
-                        <div style={{"color": "gray"}}>{q.body}</div>
+                        <div className={"likes"}>
+                            <div className={"unlike-button"}></div>
+                            <div style={{color: "gray"}}>{q.likes.length}</div>
+                        </div>
+                        <div className={"question-item-main"}>
+                            <NavLink to={"/questions/" + q.id}>{q.title}</NavLink>
+                            <div style={{"color": "gray"}}>{q.body}</div>
+                        </div>
                     </div>
                 )}
             </div>

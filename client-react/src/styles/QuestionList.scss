@@ -3,9 +3,26 @@
 
 .QuestionListItem {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   padding: 1em;
   border: solid 1px gray;
   border-radius: 0.5em;
   margin: 1em;
+  .unlike-button {
+    background-image: url("https://vectr.com/tmp/cjCERuVDq/c6z8UwwmE.svg?width=46.80851063829789&height=46.80851063829789&select=excGW7pS2&source=selection");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+  }
+
+  .likes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 1em;
+  }
+
 }
+
