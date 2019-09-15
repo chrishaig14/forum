@@ -9,6 +9,9 @@ function reducer(state = {}, action) {
     } else if (action.type === "LOGIN_SUCCESSFUL") {
         newState.token = action.data.token;
         Cookies.set("token", newState.token);
+    } else if (action.type === "LOGOUT") {
+        newState.token = "";
+        Cookies.remove("token");
     } else if (action.type === "GET_QUESTION_SUCCESSFUL") {
         newState.questionView = {
             question: {...action.data.question},//, liked: action.data.question.likes.includes(newState.token)},

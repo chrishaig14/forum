@@ -11,13 +11,15 @@ class Header extends React.Component {
                 <div className={"search-form"}>
                     <input type={"text"} placeholder={"Search"}/>
                 </div>
-                {this.props.username ? <div className={"user"}>{this.props.username}</div> :
+                {this.props.username ?
+                    <div className={"user"}>{this.props.username}</div> :
                     <NavLink to={"/login"}>Login</NavLink>}
+                {this.props.username ? <button onClick={this.props.logout}>Logout</button> : null}
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({username: state.main.token});
-const mapDispatchToProps = null;
+const mapDispatchToProps = dispatch => ({logout: () => dispatch({type: "LOGOUT"})});
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
