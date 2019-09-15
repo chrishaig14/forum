@@ -46,13 +46,10 @@ ReactDOM.render(
         <ConnectedRouter history={history}>
             <Header/>
             <div style={{"margin-top": "70px"}}>
-                {Cookies.get("token") ? <Redirect to={"/allQuestions"}/> : null}
-                <Switch>
-                    <Route exact path={"/"} component={LoginBox}/>
-                    <Route path={"/signup"} component={SignupBox}/>
-                </Switch>
+                <Route exact path={"/login"} component={LoginBox}/>
+                <Route path={"/signup"} component={SignupBox}/>
                 <Route path={"/newQuestion"} component={NewQuestion}/>
-                <Route path={"/allQuestions"} component={QuestionList}/>
+                <Route exact path={"/"} component={QuestionList}/>
                 <Route path={"/questions/:id"} component={QuestionView}/>
             </div>
         </ConnectedRouter>

@@ -14,7 +14,7 @@ export function* loginAsync(action) {
     let result = yield fetch(serverUrl + "/login", request);
     if (result.ok) {
         yield put({type: "LOGIN_SUCCESSFUL", data: {token: result.headers.get("authorization")}});
-        yield put(push("/allQuestions"));
+        yield put(push("/"));
     }
 }
 

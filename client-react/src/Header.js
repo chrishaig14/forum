@@ -11,7 +11,8 @@ class Header extends React.Component {
                 <div className={"search-form"}>
                     <input type={"text"} placeholder={"Search"}/>
                 </div>
-                <div className={"user"}>{this.props.username}</div>
+                {this.props.username ? <div className={"user"}>{this.props.username}</div> :
+                    <NavLink to={"/login"}>Login</NavLink>}
             </div>
         );
     }
