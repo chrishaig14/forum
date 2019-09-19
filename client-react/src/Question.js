@@ -12,9 +12,11 @@ function Question(props) {
 
                     {props.question.likes.includes(Cookies.get("token")) ?
                         <button title={props.question.likes.join(",")}
-                                onClick={() => props.unlikeQuestion(props.question.id)} className={"unlike-button"}/> :
+                                onClick={() => props.unlikeQuestion(props.question.id)} className={"unlike-button"}>
+                            ★
+                        </button> :
                         <button title={props.question.likes.join(",")}
-                                onClick={() => props.likeQuestion(props.question.id)} className={"like-button"}/>}
+                                onClick={() => props.likeQuestion(props.question.id)} className={"like-button"}>☆</button>}
                     <div className={"likes-number"}>{props.question.likes.length}</div>
                 </div>
                 <div className={"question-main"}>

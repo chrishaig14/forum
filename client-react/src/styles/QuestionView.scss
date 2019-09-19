@@ -94,36 +94,21 @@
   align-items: center;
 
   .like-button, .unlike-button {
-    padding: 0;
-    margin: 0;
-    border: none;
-    width: 0;
-    height: 0;
+    font-size: 24pt;
     background-color: transparent;
-    border-radius: 0;
+    color: black;
+    padding: 0;
 
     &:focus {
       outline: none;
     }
   }
-
   .like-button {
-    background-image: url("https://vectr.com/tmp/cjCERuVDq/a2gJejc3t1.svg?width=46.80851063829786&height=46.80851063829789&select=d4OxZJMJYX&source=selection");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 30px;
-    height: 30px;
+    color:gray;
   }
-
-  .unlike-button {
-    background-image: url("https://vectr.com/tmp/cjCERuVDq/c6z8UwwmE.svg?width=46.80851063829789&height=46.80851063829789&select=excGW7pS2&source=selection");
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    width: 30px;
-    height: 30px;
+  .unlike-button{
+    color:gold;
   }
-
 
   .likes-number {
     color: grey;

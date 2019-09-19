@@ -14,7 +14,8 @@ class QuestionList extends React.Component {
                 {this.props.questions.map(q =>
                     <div className={"QuestionListItem"} key={q.id}>
                         <div className={"likes"}>
-                            <div className={"unlike-button"}></div>
+                            <div className={"unlike-button"}>★</div>
+
                             <div style={{color: "gray"}}>{q.likes.length}</div>
                         </div>
                         <div className={"question-item-main"}>

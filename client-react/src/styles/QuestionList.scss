@@ -9,12 +9,22 @@
   border: solid 1px gray;
   border-radius: 0.5em;
   margin: 1em;
-  .unlike-button {
-    background-image: url("https://vectr.com/tmp/cjCERuVDq/c6z8UwwmE.svg?width=46.80851063829789&height=46.80851063829789&select=excGW7pS2&source=selection");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 30px;
-    height: 30px;
+
+  .like-button, .unlike-button {
+    font-size: 24pt;
+    background-color: transparent;
+    color: black;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  .like-button {
+    color:gray;
+  }
+  .unlike-button{
+    color:gold;
   }
 
   .likes {
