@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import "./styles/QuestionList.css";
 import {NavLink} from "react-router-dom";
 import {parse} from "query-string";
+import QuestionListItem from "./QuestionListItem";
 
 class SearchView extends React.Component {
     componentDidMount() {
@@ -20,12 +21,7 @@ class SearchView extends React.Component {
 
             <div className={"QuestionList"}>
                 <h1>{this.props.questions.length === 1 ? "1 result" : (this.props.questions.length === 0 ? "No results" : this.props.questions.length + " results")}</h1>
-                {this.props.questions.map(q =>
-                    <div className={"QuestionListItem"} key={q.id}>
-                        <NavLink to={"/questions/" + q.id}>{q.title}</NavLink>
-                        <div style={{"color": "gray"}}>{q.body}</div>
-                    </div>
-                )}
+                {this.props.questions.map(q => <QuestionListItem question={q}/>)}
             </div>
         );
     }
