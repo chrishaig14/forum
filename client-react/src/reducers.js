@@ -39,6 +39,9 @@ function reducer(state = {}, action) {
         newState.questionView.question.likes.push(newState.token);
     } else if (action.type === "UNLIKE_QUESTION_SUCCESSFUL") {
         newState.questionView.question.likes = newState.questionView.question.likes.filter(u => u !== newState.token);
+    } else if (action.type === "USER_PROFILE_SUCCESSFUL") {
+        newState.user = action.data.user;
+        console.log("USER: ", newState)
     }
     return newState;
 }

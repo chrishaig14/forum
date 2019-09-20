@@ -32,7 +32,7 @@ class Header extends React.Component {
                     </form>
                 </div>
                 {this.props.username ?
-                    <div className={"user"}>{this.props.username}</div> :
+                    <NavLink to={"/users/" + this.props.username} className={"user"}>{this.props.username}</NavLink> :
                     <NavLink to={"/login"}>Login</NavLink>}
                 {this.props.username ? <button onClick={this.props.logout}>Logout</button> : null}
             </div>

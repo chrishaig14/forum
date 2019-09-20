@@ -21,6 +21,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import Header from "./Header";
 import Cookies from "js-cookie";
 import SearchView from "./SearchView";
+import UserProfileView from "./UserProfileView";
 
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
@@ -30,7 +31,8 @@ const initialState = {
         value: 0,
         questionList: [],
         questionView: {question: null, answers: []},
-        token: Cookies.get("token")
+        token: Cookies.get("token"),
+        user: {questions:[]}
     }
 };
 
@@ -52,6 +54,7 @@ ReactDOM.render(
                 <Route path={"/newQuestion"} component={NewQuestion}/>
                 <Route exact path={"/"} component={QuestionList}/>
                 <Route path={"/questions/:id"} component={QuestionView}/>
+                <Route path={"/users/:id"} component={UserProfileView}/>
                 <Route path={"/search"} component={SearchView}/>
             </div>
         </ConnectedRouter>

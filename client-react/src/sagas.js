@@ -142,6 +142,13 @@ export function* submitSearchAsync(action) {
     yield put(push(url));
 }
 
+export function* getUserProfile(action) {
+    console.log("GETTING USER: ", action.data.username);
+    let result = yield fetch(serverUrl + "/users/" + action.data.username);
+    let user = yield result.json();
+    console.log("GOT USER PROFILE: ", user);
+    yield put({type: "USER_PROFILE_SUCCESSFUL", data: user});
+}
 
 export function* watcher() {
     yield all([
@@ -156,7 +163,8 @@ export function* watcher() {
         takeEvery("SIGNUP", signupAsync),
         takeEvery("NEW_QUESTION", newQuestionAsync),
         takeEvery("NEW_ANSWER", newAnswerAsync),
-        takeEvery("GET_ALL_QUESTIONS", getAllQuestions)
+        takeEvery("GET_ALL_QUESTIONS", getAllQuestions),
+        takeEvery("GET_USER_PROFILE", getUserProfile)
     ]);
 }
 
