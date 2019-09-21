@@ -33,9 +33,9 @@ function Answer(props) {
                 <div className={"likes"}>
                     {props.answer.likes.includes(Cookies.get("token")) ?
                         <button title={props.answer.likes.join(",")} onClick={() => props.unlikeAnswer(props.answer.id)}
-                                className={"unlike-button"}/> :
+                                className={"unlike-button"}> ★</button> :
                         <button title={props.answer.likes.join(",")} onClick={() => props.likeAnswer(props.answer.id)}
-                                className={"like-button"}/>}
+                                className={"like-button"}>☆</button>}
                     <div className={"likes-number"}>{props.answer.likes.length}</div>
 
                 </div>

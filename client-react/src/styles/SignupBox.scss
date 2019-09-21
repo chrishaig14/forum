@@ -10,8 +10,12 @@
 
   .signup-password {
     margin-bottom: 1em;
+    background-color: white;
   }
 
+  .passwords-dont-match {
+    background-color: red;
+  }
 
   .submit-signup {
     align-self: center;
