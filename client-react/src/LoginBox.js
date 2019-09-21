@@ -16,6 +16,7 @@ class LoginBox extends React.Component {
                 this.props.onSubmit(this.state);
                 e.preventDefault();
             }}>
+                <h2>Login</h2>
                 <input className={"login-username"} placeholder="username" type={"text"} value={this.state.username}
                        onChange={(e) => {
                            this.setState({username: e.target.value});

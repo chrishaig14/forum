@@ -11,9 +11,11 @@ class QuestionList extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={"QuestionList"}>
+
                 <h2>All questions ({this.props.questions.length})</h2>
-                <div className={"QuestionList"}>
+                <div>
+
                     {this.props.questions.map(q =>
                         <QuestionListItem question={q}/>
                     )}
