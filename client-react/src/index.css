@@ -1,6 +1,6 @@
 input, textarea {
   border: solid 1px #4285F4;
-  border-radius: 0.5em;
+  border-radius: 4px;
   padding: 0.5em; }
 
 input:active, button:active, textarea:active {
@@ -8,10 +8,11 @@ input:active, button:active, textarea:active {
 
 button {
   padding: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 4px;
   border: none;
   background-color: #4285F4;
-  color: white; }
+  color: white;
+  box-shadow: grey -1px 1px 2px 0px; }
   button:hover {
     background-color: #0d47a1; }
 

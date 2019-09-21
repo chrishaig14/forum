@@ -11,7 +11,7 @@
   border: solid 1px gray;
   padding: 1em;
   margin-bottom: 1em;
-  border-radius: 0.5em;
+  border-radius: 4px;
 
   .question-container {
     display: flex;
@@ -56,6 +56,7 @@
 
   .tag {
     background-color: $primary;
+    border-radius: 2px;
     padding: 0.2em;
     font-size: small;
     color: white;
@@ -82,11 +83,15 @@
   }
 
   .like-button {
+    border: none;
+    box-shadow: none;
     color: gray;
   }
 
   .unlike-button {
-    color: gold;
+    border: none;
+    box-shadow: none;
+    color: #bfa517;
   }
 
   .likes-number {

@@ -16,7 +16,7 @@ class QuestionView extends React.Component {
             this.props.question ?
                 (<div className={"QuestionView"}>
                     <Question question={this.props.question}/>
-                    <div className={"answer-container"}>
+                    <div className={"answer-list"}>
 
                         <h3 style={{
                             "margin-top": "1em",
