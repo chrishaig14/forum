@@ -32,7 +32,7 @@ const initialState = {
         questionList: [],
         questionView: {question: null, answers: []},
         token: Cookies.get("token"),
-        user: {questions:[]}
+        user: {questions: []}
     }
 };
 
@@ -51,7 +51,8 @@ ReactDOM.render(
             <div style={{"margin-top": "70px"}}>
                 <Route exact path={"/login"} component={LoginBox}/>
                 <Route path={"/signup"} component={SignupBox}/>
-                <Route path={"/newQuestion"} component={NewQuestion}/>
+                <Route path={"/newQuestion"}
+                       render={() => Cookies.get("token") ? <NewQuestion/> : <Redirect to={"/login"}/>}/>
                 <Route exact path={"/"} component={QuestionList}/>
                 <Route path={"/questions/:id"} component={QuestionView}/>
                 <Route path={"/users/:id"} component={UserProfileView}/>
