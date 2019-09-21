@@ -10,10 +10,12 @@ function timeSince(timeStamp) {
         return parseInt(secondsPast) + " seconds ago";
     }
     if (secondsPast < 3600) {
-        return parseInt(secondsPast / 60) + " minutes ago";
+        let m = parseInt(secondsPast / 60);
+        return m + " " + (m > 1 ? "minutes" : "minute") + " " + "ago";
     }
     if (secondsPast <= 86400) {
-        return parseInt(secondsPast / 3600) + " hours ago";
+        let m = parseInt(secondsPast / 3600);
+        return m + " " + (m > 1 ? "hours" : "hour") + " " + "ago";
     }
     if (secondsPast > 86400) {
         let day = timeStamp.getDate();
@@ -22,7 +24,6 @@ function timeSince(timeStamp) {
         return day + " " + month + year;
     }
 }
-
 function Question(props) {
     console.log("tags: ", props.question.tags);
     return (
