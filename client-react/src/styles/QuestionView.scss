@@ -64,12 +64,20 @@
     border-top: solid 1px lightgray;
     padding-top: 1em;
 
+    .asked {
+      .timestamp {
+        font-size: small;
+        color: gray;
+      }
+    }
+
     .asked-by {
       color: gray;
       font-size: small;
     }
   }
 }
+
 
 .tags-container {
   display: flex;
@@ -103,11 +111,13 @@
       outline: none;
     }
   }
+
   .like-button {
-    color:gray;
+    color: gray;
   }
-  .unlike-button{
-    color:gold;
+
+  .unlike-button {
+    color: gold;
   }
 
   .likes-number {

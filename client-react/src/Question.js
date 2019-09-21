@@ -3,6 +3,26 @@ import * as React from "react";
 import {connect} from "react-redux";
 import Cookies from "js-cookie";
 
+function timeSince(timeStamp) {
+    let now = new Date();
+    let secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
+    if (secondsPast < 60) {
+        return parseInt(secondsPast) + " seconds ago";
+    }
+    if (secondsPast < 3600) {
+        return parseInt(secondsPast / 60) + " minutes ago";
+    }
+    if (secondsPast <= 86400) {
+        return parseInt(secondsPast / 3600) + " hours ago";
+    }
+    if (secondsPast > 86400) {
+        let day = timeStamp.getDate();
+        let month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ", "");
+        let year = timeStamp.getFullYear() === now.getFullYear() ? "" : " " + timeStamp.getFullYear();
+        return day + " " + month + year;
+    }
+}
+
 function Question(props) {
     console.log("tags: ", props.question.tags);
     return (
@@ -16,7 +36,8 @@ function Question(props) {
                             ★
                         </button> :
                         <button title={props.question.likes.join(",")}
-                                onClick={() => props.likeQuestion(props.question.id)} className={"like-button"}>☆</button>}
+                                onClick={() => props.likeQuestion(props.question.id)}
+                                className={"like-button"}>☆</button>}
                     <div className={"likes-number"}>{props.question.likes.length}</div>
                 </div>
                 <div className={"question-main"}>
@@ -26,8 +47,11 @@ function Question(props) {
                         <div className={"tags-container"}>Tags: {props.question.tags.map(t =>
                             <NavLink
                                 to={"/search?tags=" + t} className={"tag"}>{t}</NavLink>)}</div>
-                        <div className={"asked-by"}>Asked by <NavLink
-                            to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
+                        <div className={"asked"}>
+                            <div className={"asked-by"}>Asked by <NavLink
+                                to={"/users/" + props.question.username}>{props.question.username}</NavLink></div>
+                            <div className={"timestamp"}>{timeSince(new Date(props.question.timestamp))}</div>
+                        </div>
                     </div>
                 </div>
             </div>
