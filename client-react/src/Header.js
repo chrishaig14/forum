@@ -2,6 +2,8 @@ import * as React from "react";
 import {NavLink} from "react-router-dom";
 import "./styles/Header.css";
 import {connect} from "react-redux";
+import logo from "./styles/logo.svg";
+
 
 class Header extends React.Component {
     constructor(props) {
@@ -12,12 +14,9 @@ class Header extends React.Component {
     render() {
         return (
             <div className={"Header"}>
-                <NavLink className={"home-link"} to={"/"}>Home</NavLink>
-                <NavLink className={"new-question-link"} to={"/newQuestion"}>
-                    <button>
-                        New question
-                    </button>
-                </NavLink>
+
+                <NavLink className={"home-link"} to={"/"}><img style={{width: "60px"}} src={logo}/></NavLink>
+
                 <div className={"search-form"}>
                     <form onSubmit={(e) => {
                         e.preventDefault();
@@ -31,6 +30,12 @@ class Header extends React.Component {
                                }/>
                     </form>
                 </div>
+                <NavLink className={"new-question-link"} to={"/newQuestion"}
+                         style={{"min-width": "max-content", "margin-left": "2em", "margin-right": "auto"}}>
+                    <button>
+                        New question
+                    </button>
+                </NavLink>
                 {this.props.username ?
                     <NavLink to={"/users/" + this.props.username} className={"user"}>{this.props.username}</NavLink> :
                     <NavLink to={"/login"}>Login</NavLink>}

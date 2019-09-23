@@ -44,10 +44,13 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <Header/>
+class App extends React.Component {
+    componentDidMount() {
+        document.title = "Q & A";
+    }
+
+    render() {
+        return (
             <div style={{"margin-top": "70px"}}>
                 <Route exact path={"/login"} component={LoginBox}/>
                 <Route path={"/signup"} component={SignupBox}/>
@@ -58,6 +61,15 @@ ReactDOM.render(
                 <Route path={"/users/:id"} component={UserProfileView}/>
                 <Route path={"/search"} component={SearchView}/>
             </div>
+        );
+    }
+}
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <Header/>
+            <App/>
         </ConnectedRouter>
     </Provider>, document.getElementById("root"));
 
