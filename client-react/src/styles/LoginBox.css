@@ -27,9 +27,11 @@ button {
   margin-left: auto;
   margin-right: auto; }
   .LoginBox .login-username {
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    width: 100%; }
   .LoginBox .login-password {
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    width: 100%; }
   .LoginBox .submit-login {
     align-self: center; }
   .LoginBox .login-buttons {

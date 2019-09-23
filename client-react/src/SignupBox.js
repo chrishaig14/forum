@@ -22,34 +22,44 @@ class SignupBox extends React.Component {
                 e.preventDefault();
             }}>
                 <h2>Sign up</h2>
-                <input className={"signup-username"} placeholder="username" type={"text"}
-                       value={this.state.data.username}
-                       onChange={(e) => {
-                           this.setState({data: {username: e.target.value, password: this.state.data.password}});
-                       }}/>
-                <input className={"signup-password"} placeholder="password" type={"text"}
-                       value={this.state.data.password}
-                       onChange={(e) => {
-                           this.setState({data: {password: e.target.value, username: this.state.data.username}});
-                       }}/>
-                <input
-                    className={this.state.classes}
-                    placeholder="password" type={"text"}
-                    value={this.state.confirmPassword}
-                    onChange={(e) => {
-                        let confirmPassword = e.target.value;
-                        let passwordsMatch = this.state.data.password === confirmPassword || confirmPassword === "";
-                        console.log("passwordsMatch:", passwordsMatch);
-                        console.log(confirmPassword);
-                        console.log(this.state.data.password);
-                        this.setState({
-                            confirmPassword: confirmPassword,
-                            classes: ["signup-password", passwordsMatch ? "" : "passwords-dont-match"].join(" "),
-                            passwordsMatch
-                        }, () => {
-                            console.log(this.state.classes);
-                        });
-                    }}/>
+                <label>
+                    Username
+                    <input required={true} className={"signup-username"} type={"text"}
+                           value={this.state.data.username}
+                           onChange={(e) => {
+                               this.setState({data: {username: e.target.value, password: this.state.data.password}});
+                           }}/>
+                </label>
+                <label>
+                    Password
+                    <input required={true} className={"signup-password"} type={"password"}
+                           value={this.state.data.password}
+                           onChange={(e) => {
+                               this.setState({data: {password: e.target.value, username: this.state.data.username}});
+                           }}/>
+                </label>
+                <label>
+                    Confirm password
+                    <input
+                        required={true}
+                        className={this.state.classes}
+                        type={"password"}
+                        value={this.state.confirmPassword}
+                        onChange={(e) => {
+                            let confirmPassword = e.target.value;
+                            let passwordsMatch = this.state.data.password === confirmPassword || confirmPassword === "";
+                            console.log("passwordsMatch:", passwordsMatch);
+                            console.log(confirmPassword);
+                            console.log(this.state.data.password);
+                            this.setState({
+                                confirmPassword: confirmPassword,
+                                classes: ["signup-confirm-password", passwordsMatch ? "" : "passwords-dont-match"].join(" "),
+                                passwordsMatch
+                            }, () => {
+                                console.log(this.state.classes);
+                            });
+                        }}/>
+                </label>
                 <button className={"submit-signup"} type={"submit"}>Sign up</button>
             </form>
         );

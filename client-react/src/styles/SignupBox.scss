@@ -9,11 +9,19 @@
 
   .signup-username {
     margin-bottom: 1em;
+    width:100%;
   }
 
   .signup-password {
     margin-bottom: 1em;
     background-color: white;
+    width:100%;
+  }
+
+  .signup-confirm-password {
+    margin-bottom: 1em;
+    background-color: white;
+    width:100%;
   }
 
   .passwords-dont-match {

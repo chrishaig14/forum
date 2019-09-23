@@ -17,14 +17,20 @@ class LoginBox extends React.Component {
                 e.preventDefault();
             }}>
                 <h2>Login</h2>
-                <input className={"login-username"} placeholder="username" type={"text"} value={this.state.username}
-                       onChange={(e) => {
-                           this.setState({username: e.target.value});
-                       }}/>
-                <input className={"login-password"} placeholder="password" type={"text"} value={this.state.password}
-                       onChange={(e) => {
-                           this.setState({password: e.target.value});
-                       }}/>
+                <label>
+                    Username
+                    <input className={"login-username"} type={"text"} value={this.state.username}
+                           onChange={(e) => {
+                               this.setState({username: e.target.value});
+                           }}/>
+                </label>
+                <label>
+                    Password
+                    <input className={"login-password"} type={"password"} value={this.state.password}
+                           onChange={(e) => {
+                               this.setState({password: e.target.value});
+                           }}/>
+                </label>
                 <div className={"login-buttons"}>
                     <button className={"submit-login"} type={"submit"}>Login</button>
                     <NavLink to={"/signup"}>Sign up</NavLink>
