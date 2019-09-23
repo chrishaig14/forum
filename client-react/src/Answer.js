@@ -3,6 +3,8 @@ import * as React from "react";
 import {connect} from "react-redux";
 import Cookies from "js-cookie";
 import "./styles/Answer.css";
+import star from './styles/star.svg'
+import star_empty from './styles/star_empty.svg'
 
 function timeSince(timeStamp) {
     let now = new Date();
@@ -33,9 +35,9 @@ function Answer(props) {
                 <div className={"likes"}>
                     {props.answer.likes.includes(Cookies.get("token")) ?
                         <button title={props.answer.likes.join(",")} onClick={() => props.unlikeAnswer(props.answer.id)}
-                                className={"unlike-button"}> ★</button> :
+                                className={"unlike-button"}><img src={star}/></button> :
                         <button title={props.answer.likes.join(",")} onClick={() => props.likeAnswer(props.answer.id)}
-                                className={"like-button"}>☆</button>}
+                                className={"like-button"}><img src={star_empty}/></button>}
                     <div className={"likes-number"}>{props.answer.likes.length}</div>
 
                 </div>

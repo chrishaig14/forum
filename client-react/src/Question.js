@@ -2,6 +2,8 @@ import {NavLink} from "react-router-dom";
 import * as React from "react";
 import {connect} from "react-redux";
 import Cookies from "js-cookie";
+import star from './styles/star.svg'
+import star_empty from './styles/star_empty.svg'
 
 function timeSince(timeStamp) {
     let now = new Date();
@@ -34,18 +36,18 @@ function Question(props) {
                     {props.question.likes.includes(Cookies.get("token")) ?
                         <button title={props.question.likes.join(",")}
                                 onClick={() => props.unlikeQuestion(props.question.id)} className={"unlike-button"}>
-                            ★
+                            <img src={star}/>
                         </button> :
                         <button title={props.question.likes.join(",")}
                                 onClick={() => props.likeQuestion(props.question.id)}
-                                className={"like-button"}>☆</button>}
+                                className={"like-button"}><img src={star_empty}/></button>}
                     <div className={"likes-number"}>{props.question.likes.length}</div>
                 </div>
                 <div className={"question-main"}>
                     <h2>{props.question.title}</h2>
                     <p>{props.question.body}</p>
                     <div className={"question-footer"}>
-                        <div className={"tags-container"}>Tags: {props.question.tags.map(t =>
+                        <div className={"tags-container"}>{props.question.tags.map(t =>
                             <NavLink
                                 to={"/search?tags=" + t} className={"tag"}>{t}</NavLink>)}</div>
                         <div className={"asked"}>

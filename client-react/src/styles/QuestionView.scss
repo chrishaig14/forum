@@ -53,7 +53,7 @@
   flex-direction: row;
   align-items: center;
   margin-right: auto;
-
+  margin-top: 0.5em;
   .tag {
     background-color: $primary;
     border-radius: 2px;
@@ -61,7 +61,7 @@
     font-size: small;
     color: white;
     margin-right: 0.5em;
-    margin-left: 0.5em;
+    //margin-left: 0.5em;
   }
 }
 
