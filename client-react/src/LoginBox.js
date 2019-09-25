@@ -17,6 +17,11 @@ class LoginBox extends React.Component {
                 e.preventDefault();
             }}>
                 <h2>Login</h2>
+
+                <div style={{color: "gray", fontSize:"small",marginBottom:"1em", marginTop:"1em"}}>
+                    You need to log in to ask and answer questions!
+                </div>
+
                 <label>
                     Username
                     <input className={"login-username"} type={"text"} value={this.state.username}
