@@ -147,6 +147,27 @@ export function* getUserProfile(action) {
     let result = yield fetch(serverUrl + "/users/" + action.data.username);
     let user = yield result.json();
     console.log("GOT USER PROFILE: ", user);
+    let t = [];
+    for (let questionId of user.user.starsGiven.questions) {
+        let result = yield fetch(serverUrl + "/questions/" + questionId);
+        result = yield result.json();
+        t.push(result);
+    }
+    let a = [];
+    for (let answerId of user.user.starsGiven.answers) {
+        let result = yield fetch(serverUrl + "/answers/" + answerId);
+        result = yield result.json();
+        console.log("GETTING QUESTION FOR ANSWER: ", result);
+        let result_q = yield fetch(serverUrl + "/questions/" + result.answer.questionId);
+        result_q = yield result_q.json();
+        a.push({answerId, question: result_q.question});
+        console.log("GOT ANSWER: ", result);
+    }
+
+
+    user.user.starsGiven.questions = t;
+    user.user.starsGiven.answers = a;
+
     yield put({type: "USER_PROFILE_SUCCESSFUL", data: user});
 }
 

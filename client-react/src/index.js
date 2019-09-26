@@ -32,7 +32,7 @@ const initialState = {
         questionList: [],
         questionView: {question: null, answers: []},
         token: Cookies.get("token"),
-        user: {questions: []}
+        userView: null
     }
 };
 
@@ -47,6 +47,7 @@ sagaMiddleware.run(rootSaga);
 class App extends React.Component {
     componentDidMount() {
         document.title = "Q & A";
+        console.log("this.props: ", this.props);
     }
 
     render() {
@@ -59,6 +60,7 @@ class App extends React.Component {
                 <Route exact path={"/"} component={QuestionList}/>
                 <Route path={"/questions/:id"} component={QuestionView}/>
                 <Route path={"/users/:id"} component={UserProfileView}/>
+
                 <Route path={"/search"} component={SearchView}/>
             </div>
         );
