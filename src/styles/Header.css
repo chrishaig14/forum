@@ -1,0 +1,24 @@
+.Header {
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  top: 0;
+  padding: 0.5em;
+  border-bottom: solid 1px lightgray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: grey 0 1px 4px 0px; }
+
+.user {
+  margin-left: auto;
+  margin-right: 0.5em; }
+
+.search-form {
+  margin-left: auto;
+  margin-right: auto; }
+
+.home-link {
+  margin-right: auto; }
+
+/*# sourceMappingURL=Header.css.map */
