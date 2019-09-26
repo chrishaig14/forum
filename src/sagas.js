@@ -3,7 +3,9 @@ import {all, put, takeEvery, select, takeLatest} from "redux-saga/effects";
 import {push, replace} from "connected-react-router";
 import {parse} from "query-string";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = "https://chris-qa-forum-server.herokuapp.com";
+
+// const serverUrl = "";
 
 export function* loginAsync(action) {
     yield put({type: "LOGIN_REQUESTED"});
