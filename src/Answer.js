@@ -3,8 +3,8 @@ import * as React from "react";
 import {connect} from "react-redux";
 import Cookies from "js-cookie";
 import "./styles/Answer.css";
-import star from './styles/star.svg'
-import star_empty from './styles/star_empty.svg'
+import star from "./styles/star.svg";
+import star_empty from "./styles/star_empty.svg";
 
 function timeSince(timeStamp) {
     let now = new Date();
@@ -42,7 +42,7 @@ function Answer(props) {
 
                 </div>
                 <div className={"answer-main"}>
-                    <p>{props.answer.body}</p>
+                    <div dangerouslySetInnerHTML={{"__html": props.answer.body}}/>
                     <div className={"answer-footer"}>
                         <div className={"answered"}>
                             <div className={"answered-by"}>Answered by <NavLink

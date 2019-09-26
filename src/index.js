@@ -23,9 +23,9 @@ import Cookies from "js-cookie";
 import SearchView from "./SearchView";
 import UserProfileView from "./UserProfileView";
 
+
 const sagaMiddleware = createSagaMiddleware();
 export const history = createBrowserHistory();
-
 const initialState = {
     main: {
         value: 0,

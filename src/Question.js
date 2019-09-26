@@ -2,8 +2,8 @@ import {NavLink} from "react-router-dom";
 import * as React from "react";
 import {connect} from "react-redux";
 import Cookies from "js-cookie";
-import star from './styles/star.svg'
-import star_empty from './styles/star_empty.svg'
+import star from "./styles/star.svg";
+import star_empty from "./styles/star_empty.svg";
 
 function timeSince(timeStamp) {
     let now = new Date();
@@ -26,6 +26,7 @@ function timeSince(timeStamp) {
         return day + " " + month + year;
     }
 }
+
 function Question(props) {
     console.log("tags: ", props.question.tags);
     return (
@@ -45,7 +46,7 @@ function Question(props) {
                 </div>
                 <div className={"question-main"}>
                     <h2>{props.question.title}</h2>
-                    <p>{props.question.body}</p>
+                    <div dangerouslySetInnerHTML={{"__html": props.question.body}}/>
                     <div className={"question-footer"}>
                         <div className={"tags-container"}>{props.question.tags.map(t =>
                             <NavLink
