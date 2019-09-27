@@ -14,7 +14,10 @@ class UserProfileView extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("USER PROFILE PROPS CHANGED: ", this.props);
+        console.log("USER PROFILE PREV PROPS: ", prevProps);
         if (prevProps.match.params.id !== this.props.match.params.id) {
+            console.log("CALLING.... GET USER PROFILE FOR USER: ", this.props.match.params.id);
             this.props.onMount(this.props.match.params.id);
 
         }

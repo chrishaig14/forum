@@ -28,6 +28,8 @@ function reducer(state = {}, action) {
             }
             return a;
         });
+    } else if (action.type === "LOADING USER PROFILE") {
+        newState.user = null;
     } else if (action.type === "UNLIKE_ANSWER_SUCCESSFUL") {
         newState.questionView.answers = newState.questionView.answers.map(a => {
             if (a.id === action.data.answerId) {

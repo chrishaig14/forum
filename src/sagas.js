@@ -145,10 +145,12 @@ export function* submitSearchAsync(action) {
 }
 
 export function* getUserProfile(action) {
+    yield put({type: "LOADING USER PROFILE", data: {username: action.data.username}});
+
     console.log("GETTING USER: ", action.data.username);
     let result = yield fetch(serverUrl + "/users/" + action.data.username);
     let user = yield result.json();
-    // console.log("GOT USER PROFILE: ", user);
+    console.log("GOT USER PROFILE: ", user);
     let t = [];
     for (let questionId of user.user.starsGiven.questions) {
         let result = yield fetch(serverUrl + "/questions/" + questionId);
@@ -157,6 +159,13 @@ export function* getUserProfile(action) {
     }
     let a = [];
     for (let answerId of user.user.starsGiven.answers) {
+        if (answerId === null) {
+            // console.log("ANSWER ID NULL IN USER:", user.user.username);
+            // console.log("user.user.starsGiven: ", user.user.starsGiven);
+            console.log("NULL IN USER:", JSON.parse(JSON.stringify(user)));
+            // console.log("user: ", user);
+            continue;
+        }
         let result = yield fetch(serverUrl + "/answers/" + answerId);
         result = yield result.json();
         // console.log("GETTING QUESTION FOR ANSWER: ", result);
