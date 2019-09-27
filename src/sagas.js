@@ -148,7 +148,7 @@ export function* getUserProfile(action) {
     console.log("GETTING USER: ", action.data.username);
     let result = yield fetch(serverUrl + "/users/" + action.data.username);
     let user = yield result.json();
-    console.log("GOT USER PROFILE: ", user);
+    // console.log("GOT USER PROFILE: ", user);
     let t = [];
     for (let questionId of user.user.starsGiven.questions) {
         let result = yield fetch(serverUrl + "/questions/" + questionId);
@@ -159,11 +159,11 @@ export function* getUserProfile(action) {
     for (let answerId of user.user.starsGiven.answers) {
         let result = yield fetch(serverUrl + "/answers/" + answerId);
         result = yield result.json();
-        console.log("GETTING QUESTION FOR ANSWER: ", result);
+        // console.log("GETTING QUESTION FOR ANSWER: ", result);
         let result_q = yield fetch(serverUrl + "/questions/" + result.answer.questionId);
         result_q = yield result_q.json();
         a.push({answerId, question: result_q.question});
-        console.log("GOT ANSWER: ", result);
+        // console.log("GOT ANSWER: ", result);
     }
 
 
