@@ -12,6 +12,7 @@ Server repo: https://github.com/chrishaig14/forum-server
 * Search in question title & content
 * Click on a tag and see all questions with that tag
 * Click on username to see user profile: questions made by user, stars received on questions & answers made by user, stars given by user
+* HTML questions & answers (embedded WYSIWYG editor)
 
 ## Back end
 * REST API
@@ -30,3 +31,15 @@ Server repo: https://github.com/chrishaig14/forum-server
 * React-Router
 
 **IMPORTANT:** some pages (e.g. user profile) take quite a white to load.
+
+## Screenshots
+### Main
+![](https://imgur.com/EyAyIqx.png)
+### Question (1)
+![](https://imgur.com/Ngd9br9.png)
+### Question (2)
+![](https://imgur.com/DDKHlJk.png)
+### User profile
+![](https://imgur.com/aeLYEEX.png)
+### New question
+![](https://imgur.com/JAYdKRQ.png)
