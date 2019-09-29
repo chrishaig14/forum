@@ -28,3 +28,5 @@ Server repo: https://github.com/chrishaig14/forum-server
 * Redux
 * Redux-Saga
 * React-Router
+
+**IMPORTANT:** the app is not optimised, so some pages (e.g. user profile) take quite a white to load.
