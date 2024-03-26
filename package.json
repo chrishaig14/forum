@@ -17,7 +17,7 @@
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",
-    "tinymce": "^5.0.16"
+    "tinymce": "^7.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
